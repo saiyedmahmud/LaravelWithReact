@@ -20,7 +20,3 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
-Route::post('register', [AuthController::class, 'register'])->name('api.register');
-Route::post('login', [AuthController::class, 'login'])->name('api.login');
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
