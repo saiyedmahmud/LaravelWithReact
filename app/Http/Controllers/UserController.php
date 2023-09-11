@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class VendorController extends Controller
+class UserController extends Controller
 {
-    public function vendors(){
+    public function users(){
 
     }
 
-    public function vendor(Request $request, $id){
+    public function user(Request $request, $id){
 
     }
 

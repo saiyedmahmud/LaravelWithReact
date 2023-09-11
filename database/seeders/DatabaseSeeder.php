@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
             // ___________________Role seeding___________________
-            // Role::create(['name'=>'admin']);
+            // Role::create(['name'=>'admin']); i should have add guard name. it will healp me while im try to assign role to a table/modle
             // Role::create(['name'=>'vendor']);
             // Role::create(['name'=>'user']);
 
