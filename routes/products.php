@@ -21,10 +21,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['middleware' => ['role:vendor|admin']], function(){
-    Route::get('products', [ProductController::class, 'products']);
-    Route::get('product/{id}', [ProductController::class, 'product']);
-    Route::post('product', [ProductController::class, 'store']);
-    Route::put('product/update/{id}', [ProductController::class, 'update']);
-    Route::delete('product/delete/{id}', [ProductController::class, 'delete']);
+Route::get('products', [ProductController::class, 'products'])->name('products')->middleware('auth:sanctum');
+Route::get('product/{id}', [ProductController::class, 'product'])->name('product')->middleware('auth:sanctum');
+
+Route::group(['middleware' => ['role:vendor|admin', 'auth:sanctum']], function(){
+    Route::post('product', [ProductController::class, 'store'])->name('product.store');
+    Route::put('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 });

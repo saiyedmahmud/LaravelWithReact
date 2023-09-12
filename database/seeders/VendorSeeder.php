@@ -12,6 +12,6 @@ class VendorSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Vendor::factory(10)->create();
+        // \App\Models\Vendor::factory(10)->create();
     }
 }
