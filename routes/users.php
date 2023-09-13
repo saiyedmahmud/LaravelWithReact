@@ -27,7 +27,7 @@ Route::post('user', [UserController::class, 'store'])->name('user.store')->middl
 Route::post('user/login', [UserController::class, 'login'])->name('user.login')->middleware('auth:sanctum');
 Route::get('user/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('auth:sanctum');
 
-Route::group(['middleware' => ['role:user']], function(){
+Route::group(['middleware' => ['auth:sanctum', 'role:admin|user']], function(){
     Route::get('users', [UserController::class, 'users']);
     Route::get('user/{id}', [UserController::class, 'user']);
     Route::put('user/update/{id}', [UserController::class, 'update']);

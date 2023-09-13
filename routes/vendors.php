@@ -25,7 +25,7 @@ Route::post('vendor', [VendorController::class, 'store'])->name('vendor.store')-
 Route::post('vendor/login', [VendorController::class, 'login'])->name('vendor.login')->middleware('auth:sanctum');
 Route::get('vendor/logout', [VendorController::class, 'logout'])->name('vendor.logout')->middleware('auth:sanctum');
 
-Route::group(['middleware' => ['role:vendor']], function(){
+Route::group(['middleware' => ['auth:sanctum','role:vendor|admin']], function(){
     Route::get('vendors', [VendorController::class, 'vendors']);
     Route::get('vendor/{id}', [VendorController::class, 'vendor']);
     Route::put('vendor/update/{id}', [VendorController::class, 'update']);
