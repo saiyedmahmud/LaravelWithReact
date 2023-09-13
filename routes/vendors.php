@@ -20,10 +20,14 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
+
+Route::post('vendor', [VendorController::class, 'store'])->name('vendor.store')->middleware('auth:sanctum');
+Route::post('vendor/login', [VendorController::class, 'login'])->name('vendor.login')->middleware('auth:sanctum');
+Route::get('vendor/logout', [VendorController::class, 'logout'])->name('vendor.logout')->middleware('auth:sanctum');
+
 Route::group(['middleware' => ['role:vendor']], function(){
     Route::get('vendors', [VendorController::class, 'vendors']);
-    Route::get('vendor/{id}', [UserController::class, 'vendor']);
-    Route::post('vendor', [VendorController::class, 'store']);
+    Route::get('vendor/{id}', [VendorController::class, 'vendor']);
     Route::put('vendor/update/{id}', [VendorController::class, 'update']);
     Route::delete('vendor/delete/{id}', [VendorController::class, 'delete']);
 });

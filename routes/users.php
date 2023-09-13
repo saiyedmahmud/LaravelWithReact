@@ -22,10 +22,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+
+Route::post('user', [UserController::class, 'store'])->name('user.store')->middleware('auth:sanctum');
+Route::post('user/login', [UserController::class, 'login'])->name('user.login')->middleware('auth:sanctum');
+Route::get('user/logout', [UserController::class, 'logout'])->name('user.logout')->middleware('auth:sanctum');
+
 Route::group(['middleware' => ['role:user']], function(){
-    Route::get('user', [UserController::class, 'users']);
+    Route::get('users', [UserController::class, 'users']);
     Route::get('user/{id}', [UserController::class, 'user']);
-    Route::post('user', [UserController::class, 'store']);
     Route::put('user/update/{id}', [UserController::class, 'update']);
     Route::delete('user/delete/{id}', [UserController::class, 'delete']);
 });
